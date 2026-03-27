@@ -9,12 +9,12 @@ public class RopeVisualizer : MonoBehaviour
     {
         // ดึงคอมโพเนนต์ Line Renderer มาใช้งาน
         line = GetComponent<LineRenderer>();
-        line.positionCount = 2; // เชือกมี 2 ปลาย (หัว กับ ท้าย)
+        line.positionCount = 2; // เชือกมี 2 ปลาย 
     }
 
     void Update()
     {
-        // อัปเดตตำแหน่งจุดหัวและท้ายของเส้นเชือกทุกๆ เฟรม
+        // อัปเดตตำแหน่งจุดหัวและท้ายของเส้นเชือกทุกๆเฟรม
         if (packageTransform != null)
         {
             line.SetPosition(0, transform.position);       // จุดที่ 0 ติดอยู่กับ Drone
