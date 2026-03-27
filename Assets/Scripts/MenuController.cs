@@ -5,6 +5,7 @@ public class MenuController : MonoBehaviour
 {
     public GameObject storyPanel;
     public GameObject howToPlayPanel;
+    public GameObject creditPanel;
 
     public void ClickStart()
     {
@@ -20,6 +21,7 @@ public class MenuController : MonoBehaviour
     {
         howToPlayPanel.SetActive(false); // ปิดหน้าต่างสอนเล่น
     }
+    
 
     public void ClickExit()
     {
@@ -35,5 +37,15 @@ public class MenuController : MonoBehaviour
     public void ClickNo()
     {
         SceneManager.LoadScene("GameOver"); // ไปหน้าแพ้
+    }
+
+    public void ClickCredit()
+    {
+        creditPanel.SetActive(true); // เปิดหน้าต่างเครดิต
+    }
+
+    public void CloseCredit()
+    {
+        creditPanel.SetActive(false); // ปิดหน้าต่างเครดิต
     }
 }
