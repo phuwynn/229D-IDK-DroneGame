@@ -2019,8 +2019,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 63, y: 157}
-  m_SizeDelta: {x: 675.43, y: 50}
+  m_AnchoredPosition: {x: 63, y: 235}
+  m_SizeDelta: {x: 687.74, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1534311493
 MonoBehaviour:
@@ -2042,14 +2042,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Developer: Phuwynn Deesit
+  m_text: 'Developer: Phuwynn Deesit (1650705872)
 
 
     Music: Suno AI, Pixabay
 
 
-    3D Assets:
-    Versatile Studio (Asset Store)'
+    3D
+    Assets: Versatile Studio (Asset Store)
+
+
+    Picture: Google'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
