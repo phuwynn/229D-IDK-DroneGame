@@ -8,4 +8,10 @@ public class GameOverManager : MonoBehaviour
         // เตะกลับไปหน้าแรก
         SceneManager.LoadScene("MainMenu"); 
     }
+
+    public void GoToCredits()
+    {
+        // โหลดไปหน้าเครดิต
+        SceneManager.LoadScene("Credits"); 
+    }
 }
