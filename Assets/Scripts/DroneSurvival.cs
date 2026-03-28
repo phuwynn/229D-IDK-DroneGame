@@ -1,12 +1,16 @@
 using UnityEngine;
-using TMPro; // สำคัญมาก สำหรับจัดการ TextMeshPro
-using UnityEngine.SceneManagement; // สำหรับเปลี่ยน Scene
+using TMPro;
+using UnityEngine.SceneManagement;
+using System.Collections; 
 
 public class DroneSurvival : MonoBehaviour
 {
     [Header("ตั้งค่าเวลา")]
-    public float timeLimit = 60f; // ให้เวลา 60 วินาที (แก้ใน Inspector ได้)
+    public float timeLimit = 60f;
     public TextMeshProUGUI timerText;
+
+    [Header("เอฟเฟกต์")]
+    public GameObject explosionPrefab;
 
     private bool isDead = false;
 
@@ -14,52 +18,66 @@ public class DroneSurvival : MonoBehaviour
     {
         if (isDead) return;
 
-        // นับเวลาถอยหลัง (ลบเวลาตามเฟรมเรตจริง)
         timeLimit -= Time.deltaTime;
-
-        // อัปเดตตัวเลขบนหน้าจอ (แปลงเป็นตัวเลขจำนวนเต็ม)
         timerText.text = "TIME: " + Mathf.RoundToInt(timeLimit).ToString();
 
-        // หมดเวลา = เกมโอเวอร์
         if (timeLimit <= 0)
         {
-            TriggerGameOver("Time's Up!");
+            // หมดเวลา = สั่งระเบิด และเกมโอเวอร์
+            StartCoroutine(ExplodeAndGameOver("Time's Up!")); 
         }
     }
 
-    // ฟังก์ชันนี้จะทำงานอัตโนมัติเมื่อโดรนไปชนวัตถุอื่น
     private void OnCollisionEnter(Collision collision)
     {
         if (isDead) return;
 
-        // ถ้าชนวัตถุที่แปะป้ายชื่อว่า "Building" หรือ "Ground" (พื้น)
         if (collision.gameObject.CompareTag("Building"))
         {
-            TriggerGameOver("Crashed into a building!");
+            // ชนตึก = สั่งระเบิด และเกมโอเวอร์
+            StartCoroutine(ExplodeAndGameOver("Crashed into a building!"));
         }
     }
-    // ฟังก์ชันนี้จะทำงานอัตโนมัติเมื่อโดรนบินทะลุเข้า "เขตรู้ใจ" (Is Trigger)
+
+    // ฟังก์ชันสำหรับบินทะลุเข้าจุดส่งของ (ชนะ)
     private void OnTriggerEnter(Collider other)
     {
-        if (isDead) return; // ถ้าตายแล้ว ไม่รับรู้ชนะแล้ว
+        if (isDead) return;
 
-        // ถ้าสิ่งที่โดรนบินทะลุเข้ามา แปะป้ายชื่อว่า "Finish"
+        // ถ้าชนกับโซนที่แปะ Tag ว่า "Finish"
         if (other.gameObject.CompareTag("Finish"))
         {
-            isDead = true; // ล็อกไม่ให้ขยับได้อีก
+            isDead = true; 
             Debug.Log("Mission Accomplished! Loading Win Scene...");
-            
-            // วาร์ปผู้เล่นไปหน้า Scene Winner ทันที!
-            SceneManager.LoadScene("Winner");
+            SceneManager.LoadScene("Winner"); // วาร์ปไปหน้าชนะ
         }
     }
 
-    private void TriggerGameOver(string reason)
+    IEnumerator ExplodeAndGameOver(string reason)
     {
-        isDead = true;
+        isDead = true; // ล็อกไม่ให้ขยับ
         Debug.Log("Game Over: " + reason);
-        
-        // เตะผู้เล่นไปหน้า Game Over ที่เราทำเตรียมไว้เลย!
+
+        // 1. สั่งระเบิดตรงตำแหน่งโดรน
+        if (explosionPrefab != null)
+        {
+            Instantiate(explosionPrefab, transform.position, transform.rotation);
+        }
+
+        // 2. สั่งซ่อนโมเดลโดรน (ทั้งตัวแม่และตัวลูกที่เอามาสวมทับ)
+        foreach (MeshRenderer mr in GetComponentsInChildren<MeshRenderer>())
+        {
+            mr.enabled = false;
+        }
+        foreach (SkinnedMeshRenderer smr in GetComponentsInChildren<SkinnedMeshRenderer>())
+        {
+            smr.enabled = false;
+        }
+
+        // 3. รอ 1 วินาที เพื่อให้ผู้เล่นเห็นระเบิดสวยๆ
+        yield return new WaitForSeconds(1f); 
+
+        // 4. วาร์ปไปหน้า Game Over
         SceneManager.LoadScene("GameOver");
     }
 }
