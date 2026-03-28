@@ -38,6 +38,21 @@ public class DroneSurvival : MonoBehaviour
             TriggerGameOver("Crashed into a building!");
         }
     }
+    // ฟังก์ชันนี้จะทำงานอัตโนมัติเมื่อโดรนบินทะลุเข้า "เขตรู้ใจ" (Is Trigger)
+    private void OnTriggerEnter(Collider other)
+    {
+        if (isDead) return; // ถ้าตายแล้ว ไม่รับรู้ชนะแล้ว
+
+        // ถ้าสิ่งที่โดรนบินทะลุเข้ามา แปะป้ายชื่อว่า "Finish"
+        if (other.gameObject.CompareTag("Finish"))
+        {
+            isDead = true; // ล็อกไม่ให้ขยับได้อีก
+            Debug.Log("Mission Accomplished! Loading Win Scene...");
+            
+            // วาร์ปผู้เล่นไปหน้า Scene Winner ทันที!
+            SceneManager.LoadScene("Winner");
+        }
+    }
 
     private void TriggerGameOver(string reason)
     {

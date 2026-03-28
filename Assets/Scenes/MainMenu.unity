@@ -292,7 +292,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 6, y: -247}
+  m_AnchoredPosition: {x: -16, y: -254}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &90446407
@@ -2019,8 +2019,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 63, y: 235}
-  m_SizeDelta: {x: 687.74, y: 50}
+  m_AnchoredPosition: {x: 25, y: 206}
+  m_SizeDelta: {x: 880.9, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1534311493
 MonoBehaviour:
@@ -2045,11 +2045,11 @@ MonoBehaviour:
   m_text: 'Developer: Phuwynn Deesit (1650705872)
 
 
-    Music: Suno AI, Pixabay
+    Music: Suno AI, Tiktok
 
 
     3D
-    Assets: Versatile Studio (Asset Store)
+    Assets: Versatile Studio, VooDooPlay (Asset Store)
 
 
     Picture: Google'
@@ -2429,7 +2429,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 14, y: 0}
+  m_AnchoredPosition: {x: 14, y: 75}
   m_SizeDelta: {x: 515.5, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1648890926
@@ -2453,6 +2453,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: '[Spacebar] = Take off
+
 
     [W][A][S][D] = Control direction'
   m_isRightToLeft: 0
@@ -2634,7 +2635,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 8dc261260ffafbd4b9fa53a9015aa3f8, type: 3}
+  m_audioClip: {fileID: 8300000, guid: fcc77392f50f86a40b22cb03989195f3, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
